@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Live class · Future Ready</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<section id="prejoin" class="center">
+  <form class="card narrow" id="pjForm" style="width:100%">
+    <div class="brand">Future Ready</div>
+    <h2 id="pjTitle" style="margin:6px 0 2px">Live class</h2>
+    <p class="muted" id="pjRole">You're joining as a student.</p>
+    <p class="err hide" id="pjErr"></p>
+    <label for="name">Your name</label>
+    <input id="name" type="text" maxlength="30" required placeholder="Your full name">
+    <div class="checks">
+      <label><input type="checkbox" id="wantCam"> Camera on</label>
+      <label><input type="checkbox" id="wantMic"> Mic on</label>
+    </div>
+    <button class="btn full" type="submit" id="pjBtn">Join class</button>
+  </form>
+</section>
+
+<section id="room" class="hide">
+  <header>
+    <span class="brand">Future Ready</span>
+    <span class="t" id="classTitle"></span>
+    <span class="live">LIVE</span>
+    <span class="chip" id="timer">00:00</span>
+    <span class="sp"></span>
+    <span class="chip" id="count"></span>
+    <button class="ghost" id="copyBtn">Copy student link</button>
+  </header>
+  <div id="banner" class="hide"></div>
+  <main>
+    <div class="left">
+      <div class="stage">
+        <video id="mainVid" autoplay playsinline class="hide"></video>
+        <div class="avatar" id="avatar"><div class="c" id="avLetter">T</div><div id="avText"></div></div>
+        <div class="pip hide" id="pip"><video id="pipVid" autoplay playsinline muted></video></div>
+        <div class="badge" id="badge"></div>
+      </div>
+      <div id="strip" class="hide"></div>
+      <div class="controls">
+        <button class="cb off" id="micBtn"><span>🎤</span>Mic off</button>
+        <button class="cb off" id="camBtn"><span>📷</span>Camera off</button>
+        <button class="cb" id="shareBtn"><span>🖥️</span>Share screen</button>
+        <button class="cb" id="handBtn"><span>✋</span>Raise hand</button>
+        <button class="cb leave" id="leaveBtn"><span>🚪</span>Leave</button>
+      </div>
+    </div>
+    <aside>
+      <div class="tabs"><button id="tChat" class="on">Chat</button><button id="tPeople">People</button></div>
+      <div class="pane" id="chat"></div>
+      <div class="pane hide" id="people"></div>
+      <form class="chatin" id="chatForm"><input id="msg" type="text" placeholder="Type a message" maxlength="500" autocomplete="off"><button class="btn" type="submit">Send</button></form>
+    </aside>
+  </main>
+  <div id="audios" class="hide"></div>
+</section>
+<div id="toast" class="hide"></div>
+<script src="/class.js"></script>
+</body>
+</html>

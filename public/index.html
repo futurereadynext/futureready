@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Future Ready · Live classroom</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="center"><div class="wrap">
+  <div class="brand">Future Ready</div>
+  <h1>Teach live. Students join with a link.</h1>
+  <p class="muted">Video, screen share, chat and raised hands in the browser. No installs for students.</p>
+  <div class="cols">
+    <form class="card" id="startForm">
+      <h2>Start a class</h2>
+      <p class="muted">You become the teacher and get a link to share.</p>
+      <label for="title">Class title</label>
+      <input id="title" type="text" value="Intro to AI" maxlength="60">
+      <label for="tname">Your name</label>
+      <input id="tname" type="text" placeholder="e.g. Rahul Sir" maxlength="30" required>
+      <button class="btn full" type="submit">Start class</button>
+    </form>
+    <form class="card" id="joinForm">
+      <h2>Join a class</h2>
+      <p class="muted">Paste the class link or type the class code.</p>
+      <label for="code">Class link or code</label>
+      <input id="code" type="text" placeholder="e.g. k7m2xq" required>
+      <button class="btn alt full" type="submit">Join class</button>
+    </form>
+  </div>
+</div></div>
+<script>
+function rand(n){var a='abcdefghjkmnpqrstuvwxyz23456789',o='',b=new Uint8Array(n);crypto.getRandomValues(b);for(var i=0;i<n;i++)o+=a[b[i]%a.length];return o}
+document.getElementById('startForm').onsubmit=function(e){
+  e.preventDefault();
+  var id=rand(6),key=rand(20),t=document.getElementById('title').value.trim()||'Live Class';
+  try{localStorage.setItem('fr_host_'+id,key);localStorage.setItem('fr_name',document.getElementById('tname').value.trim())}catch(x){}
+  location.href='/class/'+id+'?host='+key+'&t='+encodeURIComponent(t);
+};
+document.getElementById('joinForm').onsubmit=function(e){
+  e.preventDefault();
+  var v=document.getElementById('code').value.trim();
+  var m=v.match(/\/class\/([a-z0-9-]+)/i);
+  var id=(m?m[1]:v).toLowerCase().replace(/[^a-z0-9-]/g,'');
+  if(id)location.href='/class/'+id;
+};
+</script>
+</body>
+</html>

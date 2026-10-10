@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: future-ready-live
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /healthz
